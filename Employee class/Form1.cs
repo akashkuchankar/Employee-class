@@ -33,7 +33,7 @@ namespace Employee_class
         {
             try
             {
-                string qry = "delete from emp where id=@id";
+                string qry = "delete from emmpp where id=@id";
                 cmd = new SqlCommand(qry, con);
                 cmd.Parameters.AddWithValue("@id", Convert.ToInt32(txtEnterempId.Text));
                 con.Open();
@@ -58,7 +58,7 @@ namespace Employee_class
         {
             try
             {
-                string qry = "insert into emp values(@nm,@sal)";
+                string qry = "insert into emmpp values(@nm,@sal)";
                 cmd = new SqlCommand(qry, con);
                 cmd.Parameters.AddWithValue("@nm", txtEnterempName.Text);
                 cmd.Parameters.AddWithValue("@sal", Convert.ToDecimal(txtEntersalary.Text));
@@ -84,7 +84,7 @@ namespace Employee_class
         {
             try
             {
-                string qry = "update emp set Name=@nm , salary=@sal where id=@id";
+                string qry = "update emmpp set Name=@nm , salary=@sal where id=@id";
                 cmd = new SqlCommand(qry, con);
                 cmd.Parameters.AddWithValue("@nm", txtEnterempName.Text);
                 cmd.Parameters.AddWithValue("@sal", Convert.ToDecimal(txtEntersalary.Text));
@@ -111,7 +111,7 @@ namespace Employee_class
         {
             try
             {
-                string qry = "select * from emp where id=@id";
+                string qry = "select * from emmpp where id=@id";
                 cmd = new SqlCommand(qry, con);
                 cmd.Parameters.AddWithValue("@id", Convert.ToInt32(txtEnterempId.Text));
                 con.Open();
@@ -120,7 +120,7 @@ namespace Employee_class
                 {
                     while (dr.Read())
                     {
-                       txtEnterempName.Text = dr["name"].ToString();
+                       txtEnterempName.Text = dr["Name"].ToString();
                         txtEntersalary.Text = dr["salary"].ToString();
                     }
                 }
@@ -145,14 +145,14 @@ namespace Employee_class
         {
             try
             {
-                string qry = "select * from emp";
+                string qry = "select * from emmpp";
                 cmd = new SqlCommand(qry, con);
                 con.Open();
                 dr = cmd.ExecuteReader();
                 if (dr.HasRows)
                 {
                     DataTable table = new DataTable();
-                    table.Load(dr);// take dr & convert to table format
+                    table.Load(dr);
                     dataGridView1.DataSource = table;
                 }
                 else
